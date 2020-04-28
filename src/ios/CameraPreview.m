@@ -502,11 +502,7 @@
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
        AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
-        if ([captureSession canAddOutput:output]) {
-         [captureSession addOutput:output];
-        } else {
-            NSLog(@"canAddOutput error");
-        }
+       
 
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
@@ -523,6 +519,12 @@
             NSLog(@"deviceInput: %@", error);
         }
 
+       if ([captureSession canAddOutput:output]) {
+         [captureSession addOutput:output];
+        } else {
+            NSLog(@"canAddOutput error");
+        }
+      
         [captureSession startRunning];
         [output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 
