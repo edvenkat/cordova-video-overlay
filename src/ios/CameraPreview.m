@@ -487,7 +487,7 @@
 
 
         if (self.sessionManager != nil) {
-            [self.sessionManager startRecordVideo:fileURI];
+           // [self.sessionManager startRecordVideo:fileURI];
             //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
@@ -533,21 +533,21 @@
 
 - (void)stopRecordVideo:(CDVInvokedUrlCommand *)command
 {
-//    [output stopRecording];
-//    self.cameraRenderController.view.alpha = 0;
-//
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    CDVPluginResult *pluginResult;
-//
-//    if ([fileManager fileExistsAtPath:outputPath]){
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
-//    } else {
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: @"not found"];
-//    }
-//
-//    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
-//    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    [output stopRecording];
+    self.cameraRenderController.view.alpha = 0;
 
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    CDVPluginResult *pluginResult;
+
+    if ([fileManager fileExistsAtPath:outputPath]){
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: @"not found"];
+    }
+
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+/*
     CDVPluginResult *pluginResult;
 
     if (self.sessionManager != nil) {
@@ -560,7 +560,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
     }
     
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];*/
 }
 
 -(NSString*)getFileName
