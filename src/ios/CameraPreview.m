@@ -487,7 +487,7 @@
 
 
         if (self.sessionManager != nil) {
-           // [self.sessionManager startRecordVideo:fileURI];
+            [self.sessionManager startRecordVideo:fileURI];
             //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
