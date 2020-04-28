@@ -499,7 +499,7 @@
         output = [[AVCaptureMovieFileOutput alloc]init];
         output.maxRecordedDuration = maxDuration;
         output.movieFragmentInterval = kCMTimeInvalid;
-        captureSession = self.sessionManager.session;
+        AVCaptureSession *captureSession;
         if ([captureSession canAddOutput:output]) {
          [captureSession addOutput:output];
         } else {
