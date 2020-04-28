@@ -487,7 +487,7 @@
 
 
         if (self.sessionManager != nil) {
-            [self.sessionManager startRecordVideo:fileURI];
+            //[self.sessionManager startRecordVideo:fileURI];
             //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
@@ -515,8 +515,8 @@
             [captureSession addInput:audioInput];
 
         NSError *error;
-       // AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
+        AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
         if ([captureSession canAddInput:deviceInput]) {
          [captureSession addInput:deviceInput];
         } else {
