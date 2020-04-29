@@ -182,31 +182,31 @@
         self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
-      // AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+      AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
 
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
-        if ([self.session canAddInput:audioInput])
-            [self.session addInput:audioInput];
+        if ([captureSession canAddInput:audioInput])
+            [captureSession addInput:audioInput];
 
         NSError *error;
         AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-        if ([self.session canAddInput:deviceInput]) {
-         [self.session addInput:deviceInput];
+        if ([captureSession canAddInput:deviceInput]) {
+         [captureSession addInput:deviceInput];
         } else {
             NSLog(@"deviceInput: %@", error);
         }
 
-       if ([self.session canAddOutput:self.output]) {
-         [self.session addOutput:self.output];
+       if ([captureSession canAddOutput:self.output]) {
+         [captureSession addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
         }
       
-        [self.session startRunning];
+        [captureSession startRunning];
         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
 
         //return true to ensure callback fires
