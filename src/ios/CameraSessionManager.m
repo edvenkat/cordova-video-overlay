@@ -176,10 +176,10 @@
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
   */
-  /*CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+  CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
         self.output = [[AVCaptureMovieFileOutput alloc]init];
         self.output.maxRecordedDuration = maxDuration;
-        self.output.movieFragmentInterval = kCMTimeInvalid;*/
+        self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
