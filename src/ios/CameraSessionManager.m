@@ -202,10 +202,7 @@
 
         //
        if ([self.session canAddOutput:self.output]) {
-         [self.output setAlwaysDiscardsLateVideoFrames:YES];
-        [self.output setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
-
-        [self.output setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+        
          [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
