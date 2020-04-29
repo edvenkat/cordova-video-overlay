@@ -200,17 +200,21 @@
             NSLog(@"deviceInput: %@", error);
         }*/
 
-        /*
+        //
        if ([self.session canAddOutput:self.output]) {
+         [self.output setAlwaysDiscardsLateVideoFrames:YES];
+        [self.output setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+
+        [self.output setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
          [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
         }
-        */
+        //
       
         [self.session startRunning];
         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
-        completion(success);
+       // completion(success);
         //return true to ensure callback fires
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
        // pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
