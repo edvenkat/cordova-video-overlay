@@ -182,31 +182,31 @@
         self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
-      AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+      //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
 
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
-        if ([captureSession canAddInput:audioInput])
-            [captureSession addInput:audioInput];
+        if ([self.session canAddInput:audioInput])
+            [self.session addInput:audioInput];
 
         NSError *error;
-        AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+       /* AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-        if ([captureSession canAddInput:deviceInput]) {
-         [captureSession addInput:deviceInput];
+        if ([self.session canAddInput:deviceInput]) {
+         [self.session addInput:deviceInput];
         } else {
             NSLog(@"deviceInput: %@", error);
-        }
+        }*/
 
-       if ([captureSession canAddOutput:self.output]) {
-         [captureSession addOutput:self.output];
+       if ([self.session canAddOutput:self.output]) {
+         [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
         }
       
-        [captureSession startRunning];
+        [self.session startRunning];
         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
 
         //return true to ensure callback fires
@@ -219,9 +219,10 @@
     //self.isRecording = false;
    [self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
-    [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
+    /*[self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
-    }];
+    }];*/
+  
     //[self.session removeOutput:self.videoFileOutput];
     //self.videoFileOutput = nil;
 }
