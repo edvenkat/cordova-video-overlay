@@ -160,7 +160,7 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
         [self.session addOutput:dataOutput];
       }
     
-      AVCaptureAudioDataOutput audioOutput = [[AVCaptureAudioDataOutput alloc] init];
+      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
        if ([self.session canAddOutput:audioOutput]) {
           [self.session addOutput:audioOutput];
        }
