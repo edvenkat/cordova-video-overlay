@@ -487,14 +487,14 @@
 
 
         if (self.sessionManager != nil) {
-            //[self.sessionManager startRecordVideo:fileURI];
-            //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
+            [self.sessionManager startRecordVideo:fileURI];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
         }
 
         //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
+/*
         CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
         output = [[AVCaptureMovieFileOutput alloc]init];
         output.maxRecordedDuration = maxDuration;
@@ -532,11 +532,13 @@
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        */
     }];
 }
 
 - (void)stopRecordVideo:(CDVInvokedUrlCommand *)command
 {
+    /*
     [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
@@ -550,8 +552,8 @@
     }
 
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-/*
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];*/
+
     CDVPluginResult *pluginResult;
 
     if (self.sessionManager != nil) {
@@ -564,7 +566,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
     }
     
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];*/
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 -(NSString*)getFileName
