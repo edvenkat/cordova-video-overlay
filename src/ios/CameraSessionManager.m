@@ -154,7 +154,7 @@
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
-    /*
+    //
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
     self.assetWriterInput = [AVAssetWriterInput  assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:outputSettings];
@@ -175,12 +175,12 @@
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
-    AVCaptureVideoDataOutput
-  */
-  CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-        self.output = [[AVCaptureMovieFileOutput alloc]init];
-        self.output.maxRecordedDuration = maxDuration;
-        self.output.movieFragmentInterval = kCMTimeInvalid;
+    
+  //
+//   CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+//         self.output = [[AVCaptureMovieFileOutput alloc]init];
+//         self.output.maxRecordedDuration = maxDuration;
+//         self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
@@ -202,16 +202,16 @@
         }*/
 
         //
-      if ([self.session canAddOutput:self.output]) {
+//       if ([self.session canAddOutput:self.output]) {
          
-         [self.session addOutput:self.output];
-        } else {
-            NSLog(@"canAddOutput error");
-        }
+//          [self.session addOutput:self.output];
+//         } else {
+//             NSLog(@"canAddOutput error");
+//         }
         //
       
         //[self.session startRunning];
-        [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
+//         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
        // completion(success);
         //return true to ensure callback fires
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
