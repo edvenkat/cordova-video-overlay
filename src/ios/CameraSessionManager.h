@@ -60,6 +60,7 @@
 @property (nonatomic) BOOL isRecording;
 @property AVCaptureMovieFileOutput *output;
 @property (nonatomic) AVAssetWriterInput *audioWriterInput;
+@property (nonatomic) AVCaptureAudioDataOutput *audioOutput;
 
 //@property AVCaptureVideoDataOutput *output;
 
