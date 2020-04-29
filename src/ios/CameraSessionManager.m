@@ -244,7 +244,7 @@
 }
 
 -(void)stopRecordVideo {
-    //self.isRecording = false;
+    self.isRecording = false;
    //[self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
     [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
