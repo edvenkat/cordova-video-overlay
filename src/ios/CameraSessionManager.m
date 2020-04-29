@@ -154,7 +154,7 @@
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
-    
+    /*
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
     self.assetWriterInput = [AVAssetWriterInput  assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:outputSettings];
@@ -163,9 +163,6 @@
                 [
                     NSNumber numberWithInt:kCVPixelFormatType_32BGRA],kCVPixelBufferPixelFormatTypeKey,nil]
                ];
-    
-    
-    /* Asset writer with MPEG4 format*/
     NSError *error = nil;
     
     self.assetWriterMyData = [[AVAssetWriter alloc]
@@ -178,10 +175,49 @@
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+  */
+  CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+        output = [[AVCaptureMovieFileOutput alloc]init];
+        output.maxRecordedDuration = maxDuration;
+        output.movieFragmentInterval = kCMTimeInvalid;
+        //AVCaptureSession *captureSession = self.sessionManager.session;
+      
+      // AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+       
+
+        AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+        AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
+
+        if ([self.session canAddInput:audioInput])
+            [self.session addInput:audioInput];
+
+        NSError *error;
+        AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+        if ([self.session canAddInput:deviceInput]) {
+         [self.session addInput:deviceInput];
+        } else {
+            NSLog(@"deviceInput: %@", error);
+        }
+
+       if ([self.session canAddOutput:output]) {
+         [self.session addOutput:output];
+        } else {
+            NSLog(@"canAddOutput error");
+        }
+      
+        [self.session startRunning];
+        [output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
+
+        //return true to ensure callback fires
+        //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+       // pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
+        //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 -(void)stopRecordVideo {
-    self.isRecording = false;
+    //self.isRecording = false;
+   [output stopRecording];
 //    [self.assetWriterMyData finishWriting];
     [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
