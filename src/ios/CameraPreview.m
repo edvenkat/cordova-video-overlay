@@ -493,7 +493,7 @@
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
         }
 
-        //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 /*
         CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
         output = [[AVCaptureMovieFileOutput alloc]init];
