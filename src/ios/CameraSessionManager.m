@@ -186,11 +186,11 @@
       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
 //   self.output = [[AVCaptureVideoDataOutput alloc] init];
-        AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-        AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
+//         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+//         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
-        if ([self.session canAddInput:audioInput])
-            [self.session addInput:audioInput];
+//         if ([self.session canAddInput:audioInput])
+//             [self.session addInput:audioInput];
 
         //NSError *error;
        /* AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -202,7 +202,7 @@
         }*/
 
         //
-       if ([self.session canAddOutput:self.output]) {
+      // if ([self.session canAddOutput:self.output]) {
          
 //         [self.output setAlwaysDiscardsLateVideoFrames:YES];
 //         [self.output setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
@@ -210,10 +210,10 @@
 //         [self.output setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
          
          
-         [self.session addOutput:self.output];
-        } else {
-            NSLog(@"canAddOutput error");
-        }
+//          [self.session addOutput:self.output];
+//         } else {
+//             NSLog(@"canAddOutput error");
+//         }
         //
       
         //[self.session startRunning];
