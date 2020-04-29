@@ -177,9 +177,9 @@
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
   */
   CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-        AVCaptureMovieFileOutput *output = [[AVCaptureMovieFileOutput alloc]init];
-        output.maxRecordedDuration = maxDuration;
-        output.movieFragmentInterval = kCMTimeInvalid;
+        self.output = [[AVCaptureMovieFileOutput alloc]init];
+        self.output.maxRecordedDuration = maxDuration;
+        self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
       // AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
@@ -200,14 +200,14 @@
             NSLog(@"deviceInput: %@", error);
         }
 
-       if ([self.session canAddOutput:output]) {
-         [self.session addOutput:output];
+       if ([self.session canAddOutput:self.output]) {
+         [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
         }
       
         [self.session startRunning];
-        [output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
+        [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
 
         //return true to ensure callback fires
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
@@ -217,7 +217,7 @@
 
 -(void)stopRecordVideo {
     //self.isRecording = false;
-   [output stopRecording];
+   [self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
     [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
