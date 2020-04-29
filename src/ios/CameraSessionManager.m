@@ -175,16 +175,17 @@
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+    AVCaptureVideoDataOutput
   */
-  CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-        self.output = [[AVCaptureMovieFileOutput alloc]init];
-        self.output.maxRecordedDuration = maxDuration;
-        self.output.movieFragmentInterval = kCMTimeInvalid;
+  //CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+        //self.output = [[AVCaptureMovieFileOutput alloc]init];
+        //self.output.maxRecordedDuration = maxDuration;
+        //self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
-
+  self.output = [[AVCaptureVideoDataOutput alloc] init];
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
@@ -202,7 +203,13 @@
 
         //
        if ([self.session canAddOutput:self.output]) {
-        
+         self.dataOutput = dataOutput;
+        [dataOutput setAlwaysDiscardsLateVideoFrames:YES];
+        [dataOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+
+        [dataOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+         
+         
          [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
