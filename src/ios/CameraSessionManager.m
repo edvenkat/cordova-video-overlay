@@ -172,6 +172,8 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
+  
+  [self.session startRunning];
     //
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
@@ -225,7 +227,7 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
-  [self.session startRunning];
+  
     
   //
 //   CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
