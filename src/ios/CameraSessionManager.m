@@ -177,15 +177,15 @@
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
     AVCaptureVideoDataOutput
   */
-  //CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-        //self.output = [[AVCaptureMovieFileOutput alloc]init];
-        //self.output.maxRecordedDuration = maxDuration;
-        //self.output.movieFragmentInterval = kCMTimeInvalid;
+  CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+        self.output = [[AVCaptureMovieFileOutput alloc]init];
+        self.output.maxRecordedDuration = maxDuration;
+        self.output.movieFragmentInterval = kCMTimeInvalid;
         //AVCaptureSession *captureSession = self.sessionManager.session;
       
       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
-  self.output = [[AVCaptureVideoDataOutput alloc] init];
+//   self.output = [[AVCaptureVideoDataOutput alloc] init];
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
@@ -204,10 +204,10 @@
         //
        if ([self.session canAddOutput:self.output]) {
          
-        [self.output setAlwaysDiscardsLateVideoFrames:YES];
-        [self.output setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+//         [self.output setAlwaysDiscardsLateVideoFrames:YES];
+//         [self.output setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
 
-        [self.output setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+//         [self.output setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
          
          
          [self.session addOutput:self.output];
@@ -216,7 +216,7 @@
         }
         //
       
-        [self.session startRunning];
+        //[self.session startRunning];
         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
        // completion(success);
         //return true to ensure callback fires
