@@ -166,6 +166,10 @@
     NSError *error = nil;
   
   NSDictionary* audioOutputSettings = nil;  
+   // Add the audio input
+    AudioChannelLayout acl;
+    bzero( &acl, sizeof(acl));
+    acl.mChannelLayoutTag = kAudioChannelLayoutTag_Mono;
   
    // should work on any device requires more space
         audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
@@ -177,9 +181,9 @@
                                  nil ];
   
   
-   self.audioWriterInput = [[AVAssetWriterInput 
+   self.audioWriterInput = [AVAssetWriterInput 
                             assetWriterInputWithMediaType: AVMediaTypeAudio 
-                  outputSettings: audioOutputSettings ]];
+                  outputSettings: audioOutputSettings ];
     
     self.assetWriterMyData = [[AVAssetWriter alloc]
                               initWithURL:fileUrl
