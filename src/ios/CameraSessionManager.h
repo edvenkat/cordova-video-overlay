@@ -59,6 +59,8 @@
 @property (nonatomic) AVAssetWriter *assetWriterMyData;
 @property (nonatomic) BOOL isRecording;
 @property AVCaptureMovieFileOutput *output;
+@property (nonatomic) AVAssetWriterInput *audioWriterInput;
+
 //@property AVCaptureVideoDataOutput *output;
 
 @end
