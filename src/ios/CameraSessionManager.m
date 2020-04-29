@@ -217,6 +217,7 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+  [self.session startRunning];
     
   //
 //   CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
