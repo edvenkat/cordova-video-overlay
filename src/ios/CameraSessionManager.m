@@ -140,6 +140,8 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
       }
     
 
+    
+    
       AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
       if ([self.session canAddOutput:stillImageOutput]) {
         [self.session addOutput:stillImageOutput];
@@ -157,7 +159,11 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
 
         [self.session addOutput:dataOutput];
       }
-
+    
+      AVCaptureAudioDataOutput audioOutput = [[AVCaptureAudioDataOutput alloc] init];
+       if ([self.session canAddOutput:audioOutput]) {
+          [self.session addOutput:audioOutput];
+       }
       [self updateOrientation:[self getCurrentOrientation]];
       self.device = videoDevice;
 
