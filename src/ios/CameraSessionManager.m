@@ -1,6 +1,7 @@
 #include "CameraSessionManager.h"
 
 @implementation CameraSessionManager
+@synthesize output;
 
 - (CameraSessionManager *)init {
   if (self = [super init]) {
