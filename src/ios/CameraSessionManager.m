@@ -177,9 +177,9 @@
                                  nil ];
   
   
-   _audioWriterInput = [[AVAssetWriterInput 
+   self.audioWriterInput = [[AVAssetWriterInput 
                             assetWriterInputWithMediaType: AVMediaTypeAudio 
-                  outputSettings: audioOutputSettings ] retain];
+                  outputSettings: audioOutputSettings ]];
     
     self.assetWriterMyData = [[AVAssetWriter alloc]
                               initWithURL:fileUrl
@@ -188,9 +188,9 @@
     [self.assetWriterMyData addInput:self.assetWriterInput];
     self.assetWriterInput.expectsMediaDataInRealTime = YES;
     
-  _audioWriterInput.expectsMediaDataInRealTime = YES;
+  self.audioWriterInput.expectsMediaDataInRealTime = YES;
   
-    [self.assetWriterMyData addInput:_audioWriterInput];
+    [self.assetWriterMyData addInput:self..audioWriterInput];
   
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
@@ -241,11 +241,11 @@
 
 -(void)stopRecordVideo {
     //self.isRecording = false;
-   [self.output stopRecording];
+   //[self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
-    /*[self.assetWriterMyData finishWritingWithCompletionHandler:^(){
+    [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
-    }];*/
+    }];
   
     //[self.session removeOutput:self.videoFileOutput];
     //self.videoFileOutput = nil;
