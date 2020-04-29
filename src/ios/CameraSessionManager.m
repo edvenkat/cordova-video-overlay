@@ -194,7 +194,7 @@
     
   self.audioWriterInput.expectsMediaDataInRealTime = YES;
   
-    [self.assetWriterMyData addInput:self..audioWriterInput];
+    [self.assetWriterMyData addInput:self.audioWriterInput];
   
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
