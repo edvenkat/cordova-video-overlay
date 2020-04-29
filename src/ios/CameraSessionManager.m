@@ -190,14 +190,22 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
     acl.mChannelLayoutTag = kAudioChannelLayoutTag_Mono;
   
    // should work on any device requires more space
-        audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
+       /* audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
                               [ NSNumber numberWithInt: kAudioFormatAppleLossless ], AVFormatIDKey,
                                     [ NSNumber numberWithInt: 16 ], AVEncoderBitDepthHintKey,
                               [ NSNumber numberWithFloat: 44100.0 ], AVSampleRateKey,
                               [ NSNumber numberWithInt: 1 ], AVNumberOfChannelsKey,                                      
                               [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
-                                 nil ];
+                                 nil ];*/
   
+  
+   audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [ NSNumber numberWithInt: kAudioFormatMPEG4AAC ], AVFormatIDKey,
+                                     [ NSNumber numberWithInt: 1 ], AVNumberOfChannelsKey,
+                              [ NSNumber numberWithFloat: 44100.0 ], AVSampleRateKey,
+                              [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
+                              [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
+                              nil];
   
    self.audioWriterInput = [AVAssetWriterInput 
                             assetWriterInputWithMediaType: AVMediaTypeAudio 
