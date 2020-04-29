@@ -200,13 +200,13 @@
             NSLog(@"deviceInput: %@", error);
         }*/
 
-        /*
+        //
        if ([self.session canAddOutput:self.output]) {
          [self.session addOutput:self.output];
         } else {
             NSLog(@"canAddOutput error");
         }
-        */
+        //
       
         [self.session startRunning];
         [self.output startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
