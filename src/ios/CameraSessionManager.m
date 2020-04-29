@@ -164,6 +164,22 @@
                     NSNumber numberWithInt:kCVPixelFormatType_32BGRA],kCVPixelBufferPixelFormatTypeKey,nil]
                ];
     NSError *error = nil;
+  
+  NSDictionary* audioOutputSettings = nil;  
+  
+   // should work on any device requires more space
+        audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
+                              [ NSNumber numberWithInt: kAudioFormatAppleLossless ], AVFormatIDKey,
+                                    [ NSNumber numberWithInt: 16 ], AVEncoderBitDepthHintKey,
+                              [ NSNumber numberWithFloat: 44100.0 ], AVSampleRateKey,
+                              [ NSNumber numberWithInt: 1 ], AVNumberOfChannelsKey,                                      
+                              [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
+                                 nil ];
+  
+  
+   _audioWriterInput = [[AVAssetWriterInput 
+                            assetWriterInputWithMediaType: AVMediaTypeAudio 
+                  outputSettings: audioOutputSettings ] retain];
     
     self.assetWriterMyData = [[AVAssetWriter alloc]
                               initWithURL:fileUrl
@@ -172,6 +188,10 @@
     [self.assetWriterMyData addInput:self.assetWriterInput];
     self.assetWriterInput.expectsMediaDataInRealTime = YES;
     
+  _audioWriterInput.expectsMediaDataInRealTime = YES;
+  
+    [self.assetWriterMyData addInput:_audioWriterInput];
+  
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
     [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
