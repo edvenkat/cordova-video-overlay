@@ -127,6 +127,18 @@
         [self.session addInput:videoDeviceInput];
         self.videoDeviceInput = videoDeviceInput;
       }
+    
+    
+    // Setup the audio input
+AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
+AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
+    
+    
+     if ([self.session canAddInput:audioInput]) {
+        [self.session addInput:audioInput];
+//         self.videoDeviceInput = videoDeviceInput;
+      }
+    
 
       AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
       if ([self.session canAddOutput:stillImageOutput]) {
