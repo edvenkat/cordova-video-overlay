@@ -193,13 +193,13 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
     acl.mChannelLayoutTag = kAudioChannelLayoutTag_Mono;
   
    // should work on any device requires more space
-        audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
+     /*   audioOutputSettings = [ NSDictionary dictionaryWithObjectsAndKeys:                       
                               [ NSNumber numberWithInt: kAudioFormatAppleLossless ], AVFormatIDKey,
                                     [ NSNumber numberWithInt: 16 ], AVEncoderBitDepthHintKey,
                               [ NSNumber numberWithFloat: 44100.0 ], AVSampleRateKey,
                               [ NSNumber numberWithInt: 1 ], AVNumberOfChannelsKey,                                      
                               [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
-                                 nil ];
+                                 nil ];*/
   
   
   /* audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -210,9 +210,7 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
                               [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
                               nil];*/
   
-   self.audioWriterInput = [AVAssetWriterInput 
-                            assetWriterInputWithMediaType: AVMediaTypeAudio 
-                  outputSettings: audioOutputSettings ];
+ 
     
     self.assetWriterMyData = [[AVAssetWriter alloc]
                               initWithURL:fileUrl
@@ -220,10 +218,14 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
                               error: &error];
     [self.assetWriterMyData addInput:self.assetWriterInput];
     self.assetWriterInput.expectsMediaDataInRealTime = YES;
+  
+    /*self.audioWriterInput = [AVAssetWriterInput 
+                            assetWriterInputWithMediaType: AVMediaTypeAudio 
+                  outputSettings: audioOutputSettings ];
     
   self.audioWriterInput.expectsMediaDataInRealTime = YES;
   
-    [self.assetWriterMyData addInput:self.audioWriterInput];
+    [self.assetWriterMyData addInput:self.audioWriterInput]; */
   
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
