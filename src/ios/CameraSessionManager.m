@@ -166,6 +166,12 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
        }
       [self updateOrientation:[self getCurrentOrientation]];
       self.device = videoDevice;
+    
+    // Setup the queue
+dispatch_queue_t queue = dispatch_queue_create("MyQueue", NULL);
+[dataOutput setSampleBufferDelegate:self queue:queue];
+[audioOutput setSampleBufferDelegate:self queue:queue];
+dispatch_release(queue);
 
       completion(success);
   });
