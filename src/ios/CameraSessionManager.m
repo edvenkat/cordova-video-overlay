@@ -154,7 +154,12 @@
   });
   
   dispatch_async(self.sessionQueue, ^{
-        
+         NSError *error = nil;
+      BOOL success = TRUE;
+     if (error) {
+        NSLog(@"%@", error);
+        success = FALSE;
+      }
       // Setup the audio input
      AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
      AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
