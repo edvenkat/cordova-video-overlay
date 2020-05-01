@@ -175,7 +175,7 @@
 
           [self.session addOutput:audioOutput];
        }
-    //[audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+    [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
   });
@@ -299,9 +299,9 @@
   [self.session stopRunning];
    //[self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
-    [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
+   /* [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
-    }];
+    }];*/
   
     //[self.session removeOutput:self.videoFileOutput];
     //self.videoFileOutput = nil;
