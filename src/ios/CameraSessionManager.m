@@ -156,13 +156,15 @@
   dispatch_async(self.sessionQueue, ^{
          NSError *error = nil;
       BOOL success = TRUE;
+    
+      // Setup the audio input
+     AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
+     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
+    
      if (error) {
         NSLog(@"%@", error);
         success = FALSE;
       }
-      // Setup the audio input
-     AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
-     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
     
      if ([self.session canAddInput:audioInput]) {
         [self.session addInput:audioInput];
@@ -173,7 +175,7 @@
 
           [self.session addOutput:audioOutput];
        }
-    [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+    //[audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
   });
