@@ -236,11 +236,12 @@
     [self.assetWriterMyData addInput:self.audioWriterInput]; */
   
     self.isRecording = true;
-  
-  if (self.assetWriterMyData.status != AVAssetWriterStatusWriting ) {
+    
+    [self.session startRunning];
+  /*if (self.assetWriterMyData.status != AVAssetWriterStatusWriting ) {
            [self.assetWriterMyData startWriting];
              [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
-  }
+  }*/
    
   
   //lastSampleTime = CMSampleBufferGetPresentationTimeStamp(self.pixelBufferAdaptor);
@@ -295,6 +296,7 @@
 
 -(void)stopRecordVideo {
     self.isRecording = false;
+  [self.session stopRunning];
    //[self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
     [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
