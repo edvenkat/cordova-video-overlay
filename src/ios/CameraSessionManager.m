@@ -128,20 +128,6 @@
         self.videoDeviceInput = videoDeviceInput;
       }
     
-    
-    // Setup the audio input
-AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
-AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
-    
-    
-     if ([self.session canAddInput:audioInput]) {
-        [self.session addInput:audioInput];
-//         self.videoDeviceInput = videoDeviceInput;
-      }
-    
-
-    
-    
       AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
       if ([self.session canAddOutput:stillImageOutput]) {
         [self.session addOutput:stillImageOutput];
@@ -160,16 +146,29 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
         [self.session addOutput:dataOutput];
       }
     
-      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
+     
+      [self updateOrientation:[self getCurrentOrientation]];
+      self.device = videoDevice;
+    
+       completion(success);
+  });
+  
+  dispatch_async(self.sessionQueue, ^{
+        
+      // Setup the audio input
+     AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
+     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
+    
+     if ([self.session canAddInput:audioInput]) {
+        [self.session addInput:audioInput];
+     }
+     AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
        if ([self.session canAddOutput:audioOutput]) {
          [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
 
           [self.session addOutput:audioOutput];
        }
-      [self updateOrientation:[self getCurrentOrientation]];
-      self.device = videoDevice;
-    
-       completion(success);
+     completion(success);
   });
 }
 
