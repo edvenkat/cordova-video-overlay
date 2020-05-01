@@ -226,7 +226,11 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
   
     self.isRecording = true;
     [self.assetWriterMyData startWriting];
-    [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+  
+  lastSampleTime = CMSampleBufferGetPresentationTimeStamp(self.pixelBufferAdaptor);
+   [_videoWriter startSessionAtSourceTime:lastSampleTime];
+ 
+    //[self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
   
     
   //
