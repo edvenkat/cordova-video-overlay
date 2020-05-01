@@ -228,12 +228,17 @@ AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:a
     [self.assetWriterMyData addInput:self.audioWriterInput]; */
   
     self.isRecording = true;
-    [self.assetWriterMyData startWriting];
+  
+  if (self.assetWriterMyData.status != AVAssetWriterStatusWriting ) {
+           [self.assetWriterMyData startWriting];
+             [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+  }
+   
   
   //lastSampleTime = CMSampleBufferGetPresentationTimeStamp(self.pixelBufferAdaptor);
    //[self.assetWriterMyData startSessionAtSourceTime:lastSampleTime];
  
-    [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
+   
   
   //[self.session startRunning];
     
