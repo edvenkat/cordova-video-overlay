@@ -153,7 +153,7 @@
     
        completion(success);
   });
-  
+  /*
   dispatch_async(self.sessionaudioQueue, ^{
          NSError *error = nil;
       BOOL success = TRUE;
@@ -179,7 +179,7 @@
    
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
-  });
+  });*/
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
@@ -299,12 +299,12 @@
 
 -(void)stopRecordVideo {
     self.isRecording = false;
-  [self.session stopRunning];
+ // [self.session stopRunning];
    //[self.output stopRecording];
 //    [self.assetWriterMyData finishWriting];
-   /* [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
+    [self.assetWriterMyData finishWritingWithCompletionHandler:^(){
         NSLog (@"finished writing");
-    }];*/
+    }];
   
     //[self.session removeOutput:self.videoFileOutput];
     //self.videoFileOutput = nil;
