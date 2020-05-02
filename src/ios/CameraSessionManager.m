@@ -7,6 +7,7 @@
     // Create the AVCaptureSession
     self.session = [[AVCaptureSession alloc] init];
     self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
+    self.sessionaudioQueue = dispatch_queue_create("session audio queue", DISPATCH_QUEUE_SERIAL);
     if ([self.session canSetSessionPreset:AVCaptureSessionPresetPhoto]) {
       [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
     }
@@ -175,7 +176,7 @@
 
           [self.session addOutput:audioOutput];
        }
-    [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+    [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionaudioQueue];
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
   });
