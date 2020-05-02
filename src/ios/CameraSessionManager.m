@@ -238,7 +238,7 @@
   
     self.isRecording = true;
     
-    [self.session startRunning];
+   // [self.session startRunning];
   [self.assetWriterMyData startWriting];
    [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
   /*if (self.assetWriterMyData.status != AVAssetWriterStatusWriting ) {
