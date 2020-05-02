@@ -173,7 +173,7 @@
      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
        if ([self.session canAddOutput:audioOutput]) {
          
-   [audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionaudioQueue];
+   //[audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionaudioQueue];
           [self.session addOutput:audioOutput];
        }
    
