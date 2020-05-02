@@ -43,6 +43,7 @@
 @property (nonatomic) NSLock *filterLock;
 @property (nonatomic) AVCaptureSession *session;
 @property (nonatomic) dispatch_queue_t sessionQueue;
+@property (nonatomic) dispatch_queue_t sessionaudioQueue;
 @property (nonatomic) AVCaptureDevicePosition defaultCamera;
 @property (nonatomic) NSInteger defaultFlashMode;
 @property (nonatomic) CGFloat videoZoomFactor;
