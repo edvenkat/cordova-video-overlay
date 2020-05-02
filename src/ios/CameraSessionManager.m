@@ -154,7 +154,7 @@
        completion(success);
   });
   
-  dispatch_async(self.sessionQueue, ^{
+  dispatch_async(self.sessionaudioQueue, ^{
          NSError *error = nil;
       BOOL success = TRUE;
     
