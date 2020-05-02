@@ -240,6 +240,7 @@
     
     [self.session startRunning];
   [self.assetWriterMyData startWriting];
+   [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
   /*if (self.assetWriterMyData.status != AVAssetWriterStatusWriting ) {
            [self.assetWriterMyData startWriting];
              [self.assetWriterMyData startSessionAtSourceTime:kCMTimeZero];
