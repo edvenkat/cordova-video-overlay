@@ -485,7 +485,7 @@
 //        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 //
 
-
+  /*
         if (self.sessionManager != nil) {
             [self.sessionManager startRecordVideo:fileURI];
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
@@ -493,8 +493,8 @@
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
         }
 
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-/*
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId]; */
+//
         CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
         output = [[AVCaptureMovieFileOutput alloc]init];
         output.maxRecordedDuration = maxDuration;
@@ -532,7 +532,7 @@
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        */
+        //
     }];
 }
 
