@@ -529,7 +529,7 @@
 
         //return true to ensure callback fires
         //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         //
     }];
