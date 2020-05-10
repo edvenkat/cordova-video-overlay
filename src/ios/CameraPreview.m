@@ -499,9 +499,9 @@
         output = [[AVCaptureMovieFileOutput alloc]init];
         output.maxRecordedDuration = maxDuration;
         output.movieFragmentInterval = kCMTimeInvalid;
-        //AVCaptureSession *captureSession = self.sessionManager.session;
+        AVCaptureSession *captureSession = self.sessionManager.session;
       
-       AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+       //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
        AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
