@@ -524,8 +524,8 @@
 //             NSLog(@"canAddOutput error");
 //         }
        
-        
-        [output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+        [self.sessionManager.videoFileOutput startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+        //[output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 
         //return true to ensure callback fires
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
