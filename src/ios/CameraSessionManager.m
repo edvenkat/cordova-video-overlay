@@ -129,12 +129,12 @@
         self.videoDeviceInput = videoDeviceInput;
       }
     
-     /* AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+     AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
       if ([self.session canAddOutput:stillImageOutput]) {
         [self.session addOutput:stillImageOutput];
         [stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
         self.stillImageOutput = stillImageOutput;
-      }*/
+      }
 
       AVCaptureVideoDataOutput *dataOutput = [[AVCaptureVideoDataOutput alloc] init];
       if ([self.session canAddOutput:dataOutput]) {
