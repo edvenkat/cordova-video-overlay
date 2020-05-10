@@ -517,9 +517,9 @@
         } else {
             NSLog(@"deviceInput: %@", error);
         }*/
-        [self.sessionManager.session startRunning];
-       if ([self.sessionManager.session canAddOutput:output]) {
-         [self.sessionManager.session addOutput:output];
+        //[self.sessionManager.session startRunning];
+       if ([self.sessionManager canAddOutput:output]) {
+         [self.sessionManager addOutput:output];
         } else {
             NSLog(@"canAddOutput error");
         }
