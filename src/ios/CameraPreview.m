@@ -509,14 +509,14 @@
         if ([captureSession canAddInput:audioInput])
             [captureSession addInput:audioInput];
 
-        NSError *error;
+        /*NSError *error;
         AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
         if ([captureSession canAddInput:deviceInput]) {
          [captureSession addInput:deviceInput];
         } else {
             NSLog(@"deviceInput: %@", error);
-        }
+        }*/
         [captureSession startRunning];
        if ([captureSession canAddOutput:output]) {
          [captureSession addOutput:output];
