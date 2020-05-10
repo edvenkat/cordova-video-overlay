@@ -499,15 +499,15 @@
         output = [[AVCaptureMovieFileOutput alloc]init];
         output.maxRecordedDuration = maxDuration;
         output.movieFragmentInterval = kCMTimeInvalid;
-        AVCaptureSession *captureSession = self.sessionManager.session;
+        //AVCaptureSession *captureSession = self.sessionManager.session;
       
        //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
-       AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-        AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
+//        AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+//         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
-        if ([captureSession canAddInput:audioInput])
-            [captureSession addInput:audioInput];
+//         if ([captureSession canAddInput:audioInput])
+//             [captureSession addInput:audioInput];
 
         /*NSError *error;
         AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -517,9 +517,9 @@
         } else {
             NSLog(@"deviceInput: %@", error);
         }*/
-        [captureSession startRunning];
-       if ([captureSession canAddOutput:output]) {
-         [captureSession addOutput:output];
+        [self.sessionManager.session startRunning];
+       if ([self.sessionManager.session canAddOutput:output]) {
+         [self.sessionManager.session addOutput:output];
         } else {
             NSLog(@"canAddOutput error");
         }
