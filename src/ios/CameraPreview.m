@@ -518,11 +518,11 @@
             NSLog(@"deviceInput: %@", error);
         }*/
         //[self.sessionManager.session startRunning];
-       if ([self.sessionManager.session canAddOutput:output]) {
-         [self.sessionManager.session addOutput:output];
-        } else {
-            NSLog(@"canAddOutput error");
-        }
+//        if ([self.sessionManager.session canAddOutput:output]) {
+//          [self.sessionManager.session addOutput:output];
+//         } else {
+//             NSLog(@"canAddOutput error");
+//         }
        
         
         [output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
