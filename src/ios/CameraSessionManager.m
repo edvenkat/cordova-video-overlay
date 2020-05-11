@@ -205,8 +205,22 @@
 -(void) startRecordVideo:(NSURL *) fileUrl {
   
     //
-    NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+   // NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
+  
+  
+  // Add video input
+    NSDictionary *videoCompressionProps = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [NSNumber numberWithDouble:128.0*1024.0], AVVideoAverageBitRateKey,
+                                                        nil ];
+
+    NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              AVVideoCodecH264, AVVideoCodecKey,
+                                              [NSNumber numberWithInt:192], AVVideoWidthKey,
+                                              [NSNumber numberWithInt:144], AVVideoHeightKey,
+                                              videoCompressionProps, AVVideoCompressionPropertiesKey,
+                                              nil];
+  
     self.assetWriterInput = [AVAssetWriterInput  assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:outputSettings];
     
     self.pixelBufferAdaptor = [[AVAssetWriterInputPixelBufferAdaptor alloc]initWithAssetWriterInput:self.assetWriterInput sourcePixelBufferAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
