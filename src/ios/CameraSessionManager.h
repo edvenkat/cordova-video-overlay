@@ -57,6 +57,7 @@
 @property (nonatomic) AVCaptureMovieFileOutput *videoFileOutput;
 @property (nonatomic) AVAssetWriterInput *assetWriterInput;
 @property (nonatomic) AVAssetWriterInputPixelBufferAdaptor *pixelBufferAdaptor;
+@property (nonatomic) AVAssetWriterInputPixelBufferAdaptor *pixelBufferAdaptorAudio;
 @property (nonatomic) AVAssetWriter *assetWriterMyData;
 @property (nonatomic) BOOL isRecording;
 @property AVCaptureMovieFileOutput *output;
