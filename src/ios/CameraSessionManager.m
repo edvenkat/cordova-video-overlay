@@ -206,7 +206,7 @@
   
     //
    // NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
+                                 //   [NSNumber numberWithInt:720], AVVideoWidthKey, [NSNumber numberWithInt:1280], AVVideoHeightKey, AVVideoCodecH264, AVVideoCodecKey, nil];
   
   
   // Add video input
