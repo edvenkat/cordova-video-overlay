@@ -227,6 +227,8 @@
                 [
                     NSNumber numberWithInt:kCVPixelFormatType_32BGRA],kCVPixelBufferPixelFormatTypeKey,nil]
                ];
+  
+  
     NSError *error = nil;
   
   NSDictionary* audioOutputSettings = nil;  
@@ -269,6 +271,11 @@
                             assetWriterInputWithMediaType: AVMediaTypeAudio 
                   outputSettings: audioOutputSettings ];
     
+  self.pixelBufferAdaptorAudio = [[AVAssetWriterInputPixelBufferAdaptor alloc]initWithAssetWriterInput:self.audioWriterInput sourcePixelBufferAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                [
+                    NSNumber numberWithInt:kCVPixelFormatType_32BGRA],kCVPixelBufferPixelFormatTypeKey,nil]
+               ];
+  
   self.audioWriterInput.expectsMediaDataInRealTime = YES;
   
     [self.assetWriterMyData addInput:self.audioWriterInput]; 
