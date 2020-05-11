@@ -247,8 +247,8 @@
                               initWithURL:fileUrl
                               fileType:AVFileTypeQuickTimeMovie
                               error: &error];
-    [self.assetWriterMyData addInput:self.assetWriterInput];
-    self.assetWriterInput.expectsMediaDataInRealTime = YES;
+    //[self.assetWriterMyData addInput:self.assetWriterInput];
+    //self.assetWriterInput.expectsMediaDataInRealTime = YES;
   
     //
     self.audioWriterInput = [AVAssetWriterInput 
