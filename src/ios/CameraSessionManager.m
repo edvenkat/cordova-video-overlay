@@ -6,9 +6,9 @@
   if (self = [super init]) {
     // Create the AVCaptureSession
     self.session = [[AVCaptureSession alloc] init];
-    //self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_CONCURRENT);
+    self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_CONCURRENT);
     //self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
-    self.sessionQueue = dispatch_queue_create("session queue", NULL);
+    //self.sessionQueue = dispatch_queue_create("session queue", NULL);
     self.sessionaudioQueue = dispatch_queue_create("session audio queue", DISPATCH_QUEUE_SERIAL);
     if ([self.session canSetSessionPreset:AVCaptureSessionPresetPhoto]) {
       [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
