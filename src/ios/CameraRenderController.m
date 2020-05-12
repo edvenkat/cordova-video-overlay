@@ -234,7 +234,7 @@
       
 
     if(self.sessionManager.audioWriterInput.readyForMoreMediaData) {
-//       [self.sessionManager.audioWriterInput appendSampleBuffer:sampleBuffer];
+      [self.sessionManager.audioWriterInput appendSampleBuffer:sampleBuffer];
     }
     if(self.sessionManager.assetWriterInput.readyForMoreMediaData && self.sessionManager.isRecording) {
       static int64_t frameNumber = 0;
