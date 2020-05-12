@@ -233,7 +233,7 @@
     [(GLKView *)(self.view)display];
       
 
-    if(self.sessionManager.audioWriterInput.readyForMoreMediaData) {
+    if(self.sessionManager.audioWriterInput.readyForMoreMediaData && captureOutput==self.sessionManager.dataOutput) {
       [self.sessionManager.audioWriterInput appendSampleBuffer:sampleBuffer];
     }
     if(self.sessionManager.assetWriterInput.readyForMoreMediaData && self.sessionManager.isRecording) {
