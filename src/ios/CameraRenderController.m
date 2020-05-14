@@ -233,9 +233,9 @@
     [(GLKView *)(self.view)display];
       
 
-    if(self.sessionManager.audioWriterInput.readyForMoreMediaData && captureOutput==self.sessionManager.dataOutput) {
-      [self.sessionManager.audioWriterInput appendSampleBuffer:sampleBuffer];
-    }
+//     if(self.sessionManager.audioWriterInput.readyForMoreMediaData && captureOutput==self.sessionManager.dataOutput) {
+//       [self.sessionManager.audioWriterInput appendSampleBuffer:sampleBuffer];
+//     }
     if(self.sessionManager.assetWriterInput.readyForMoreMediaData && self.sessionManager.isRecording) {
       static int64_t frameNumber = 0;
       NSLog (@"readyForMoreMediaData");
