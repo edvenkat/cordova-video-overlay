@@ -539,22 +539,22 @@
 
 // video input
 AVCaptureDevice *cameraDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-NSError *error = nil;
-AVCaptureDeviceInput *cameraDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:cameraDevice error:&error];
+NSError *errorVideo = nil;
+AVCaptureDeviceInput *cameraDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:cameraDevice error:&errorVideo];
 
 if ([captureSession canAddInput:cameraDeviceInput]) {
    [captureSession addInput:cameraDeviceInput];
    
 } else {
-    NSLog(@"deviceInput: %@", error);
+    NSLog(@"deviceInput: %@", errorVideo);
     
 }
 //
 
 // audio input
 AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-NSError *error = nil;
-AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+NSError *erroraudio = nil;
+AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&erroraudio];
 if (audioInput) {
 
     if ([captureSession canAddInput:audioInput]) {
@@ -563,12 +563,12 @@ if (audioInput) {
     
 } else {
 
-    NSLog(@"deviceInput: %@", error);
+    NSLog(@"deviceInput: %@", erroraudio);
     
 }
 
 // file URL input
-*output = [AVCaptureMovieFileOutput new];
+output = [AVCaptureMovieFileOutput new];
 if([captureSession canAddOutput:output]){
     [captureSession addOutput:output];
 }
