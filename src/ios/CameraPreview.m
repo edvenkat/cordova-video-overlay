@@ -590,7 +590,7 @@ if([captureSession canAddOutput:output]){
 
 - (void)stopRecordVideo:(CDVInvokedUrlCommand *)command
 {
-    //
+    /*
     [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
@@ -605,10 +605,10 @@ if([captureSession canAddOutput:output]){
 
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputPath];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    //
+    */
 
   // Plugin code
-  /*
+  //
     CDVPluginResult *pluginResult;
 
     if (self.sessionManager != nil) {
@@ -622,7 +622,7 @@ if([captureSession canAddOutput:output]){
     }
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    */
+    //
 }
 
 -(NSString*)getFileName
