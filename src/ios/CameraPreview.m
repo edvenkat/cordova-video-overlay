@@ -569,13 +569,13 @@
 
 // file URL input
 output = [AVCaptureMovieFileOutput new];
-if([captureSession canAddOutput:output]){
-    [captureSession addOutput:output];
+if([self.sessionManager.session canAddOutput:output]){
+    [self.sessionManager.session addOutput:output];
 }
 
 // Start recording
 [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-[captureSession startRunning];
+[self.sessionManager.session startRunning];
 //
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
