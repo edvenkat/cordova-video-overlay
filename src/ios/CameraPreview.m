@@ -586,13 +586,13 @@ if (audioInput) {
       assetWriter = [AVAssetWriter assetWriterWithURL:fileURI fileType:AVFileTypeMPEG4 error:nil];
 AVAssetWriterInput *videoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:nil];
 videoInput.expectsMediaDataInRealTime = YES;
-AVAssetWriterInput *audioInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
+AVAssetWriterInput *audioInputAsset = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
 audioInput.expectsMediaDataInRealTime = YES;
 if ([assetWriter canAddInput:videoInput]) {
     [assetWriter addInput:videoInput];
 }
-if ([assetWriter canAddInput:audioInput]) {
-    [assetWriter addInput:audioInput];
+if ([assetWriter canAddInput:audioInputAsset]) {
+    [assetWriter addInput:audioInputAsset];
 }
        [assetWriter startWriting];
    [assetWriter startSessionAtSourceTime:kCMTimeZero];
