@@ -485,7 +485,7 @@
 //        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 //
 
-  //
+  /*
         if (self.sessionManager != nil) {
             [self.sessionManager startRecordVideo:fileURI];
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"start recording"];
@@ -494,7 +494,7 @@
         }
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId]; 
-        //
+        */
 //
 //         CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
 //         output = [[AVCaptureMovieFileOutput alloc]init];
@@ -533,6 +533,53 @@
         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
         //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         //
+      
+      
+      *captureSession = [AVCaptureSession new];
+
+// video input
+AVCaptureDevice *cameraDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+NSError *error = nil;
+AVCaptureDeviceInput *cameraDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:cameraDevice error:&error];
+
+if ([captureSession canAddInput:cameraDeviceInput]) {
+   [captureSession addInput:cameraDeviceInput];
+   
+} else {
+    NSLog(@"deviceInput: %@", error);
+    
+}
+//
+
+// audio input
+AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+NSError *error = nil;
+AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+if (audioInput) {
+
+    if ([captureSession canAddInput:audioInput]) {
+        [captureSession addInput:audioInput];
+    }
+    
+} else {
+
+    NSLog(@"deviceInput: %@", error);
+    
+}
+
+// file URL input
+*output = [AVCaptureMovieFileOutput new];
+if([captureSession canAddOutput:output]){
+    [captureSession addOutput:output];
+}
+
+// Start recording
+[output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+[captureSession startRunning];
+//
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
 
