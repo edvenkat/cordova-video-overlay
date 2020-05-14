@@ -8,7 +8,7 @@
 
 @implementation CameraPreview
 
-@synthesize parentView, outputPath, output, session, previewLayer, captureSession;
+@synthesize parentView, outputPath, output, session, previewLayer, captureSession,assetWriter;
 
 -(void) pluginInitialize{
   // start as transparent
@@ -569,19 +569,34 @@ if (audioInput) {
 
 // file URL input
 // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-output = [AVCaptureMovieFileOutput new];
+// output = [AVCaptureMovieFileOutput new];
       
 //         output.maxRecordedDuration = maxDuration;
 //         output.movieFragmentInterval = kCMTimeInvalid;
       
-if([captureSession canAddOutput:output]){
-    [captureSession addOutput:output];
-}
+// if([captureSession canAddOutput:output]){
+//     [captureSession addOutput:output];
+// }
 
 // // Start recording
- [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-[captureSession startRunning];
+//  [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+// [captureSession startRunning];
 //
+      
+      assetWriter = [AVAssetWriter assetWriterWithURL:fileURI fileType:AVFileTypeMPEG4 error:nil];
+AVAssetWriterInput *videoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:nil];
+videoInput.expectsMediaDataInRealTime = YES;
+AVAssetWriterInput *audioInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
+audioInput.expectsMediaDataInRealTime = YES;
+if ([assetWriter canAddInput:videoInput]) {
+    [assetWriter addInput:videoInput];
+}
+if ([assetWriter canAddInput:audioInput]) {
+    [assetWriter addInput:audioInput];
+}
+       [assetWriter startWriting];
+   [assetWriter startSessionAtSourceTime:kCMTimeZero];
+      
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -591,11 +606,12 @@ if([captureSession canAddOutput:output]){
 - (void)stopRecordVideo:(CDVInvokedUrlCommand *)command
 {
     //
- 
   
-    [self.sessionManager.session stopRunning];
-   [captureSession stopRunning];
-    [output stopRecording];
+  [assetWriter finishWriting];
+  
+//     [self.sessionManager.session stopRunning];
+//    [captureSession stopRunning];
+//     [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
