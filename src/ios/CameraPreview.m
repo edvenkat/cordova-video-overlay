@@ -587,7 +587,7 @@ if (audioInput) {
 AVAssetWriterInput *videoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:nil];
 videoInput.expectsMediaDataInRealTime = YES;
 AVAssetWriterInput *audioInputAsset = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
-audioInput.expectsMediaDataInRealTime = YES;
+audioInputAsset.expectsMediaDataInRealTime = YES;
 if ([assetWriter canAddInput:videoInput]) {
     [assetWriter addInput:videoInput];
 }
