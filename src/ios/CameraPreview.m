@@ -592,6 +592,8 @@ if([captureSession canAddOutput:output]){
 {
     //
  
+  
+    [self.sessionManager.session stopRunning];
    [captureSession stopRunning];
     [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
