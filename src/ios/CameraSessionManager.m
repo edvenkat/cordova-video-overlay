@@ -177,7 +177,7 @@
     
        completion(success);
   });
-  //
+  /*
   dispatch_async(self.sessionaudioQueue, ^{
          NSError *error = nil;
       BOOL success = TRUE;
@@ -204,7 +204,27 @@
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
   });
-  //
+  */
+  
+  dispatch_queue_t queueAudio=dispatch_queue_create("assetAudioWriterQueue", NULL);
+[assetWriterAudioInput requestMediaDataWhenReadyOnQueue:queueAudio usingBlock:^
+{
+    while([assetWriterAudioInput isReadyForMoreMediaData])
+    {
+        CMSampleBufferRef sampleBuffer=[assetReaderAudioOutput copyNextSampleBuffer];
+        if(sampleBuffer)
+        {
+            [assetWriterAudioInput appendSampleBuffer:sampleBuffer];
+            CFRelease(sampleBuffer);
+        } else
+        {
+            [assetWriterAudioInput markAsFinished];
+            dispatch_release(queueAudio);
+            audioFinished=YES;
+            break;
+        }
+    }
+}];
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
