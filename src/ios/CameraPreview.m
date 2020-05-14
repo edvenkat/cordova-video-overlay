@@ -535,7 +535,7 @@
         //
       
       
-      *captureSession = [AVCaptureSession new];
+      captureSession = [AVCaptureSession new];
 
 // video input
 AVCaptureDevice *cameraDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
