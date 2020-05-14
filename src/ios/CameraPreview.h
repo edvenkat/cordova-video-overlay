@@ -53,6 +53,7 @@
 @property NSString *outputPath;
 @property AVCaptureMovieFileOutput *output;
 @property AVCaptureSession *session;
+@property AVCaptureSession *captureSession;
 @property AVCaptureVideoPreviewLayer *previewLayer;
 
 @end
