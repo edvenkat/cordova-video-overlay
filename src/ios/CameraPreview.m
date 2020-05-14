@@ -577,8 +577,8 @@ if([self.sessionManager.session canAddOutput:output]){
 [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 [self.sessionManager.session startRunning];
 //
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
+        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
