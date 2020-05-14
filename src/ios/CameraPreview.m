@@ -8,7 +8,7 @@
 
 @implementation CameraPreview
 
-@synthesize parentView, outputPath, output, session, previewLayer;
+@synthesize parentView, outputPath, output, session, previewLayer, captureSession;
 
 -(void) pluginInitialize{
   // start as transparent
