@@ -530,7 +530,7 @@
 
         //return true to ensure callback fires
        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
+        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         
       
