@@ -575,7 +575,7 @@ if([self.sessionManager.session canAddOutput:output]){
 
 // Start recording
 [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-[self.sessionManager.session startRunning];
+//[self.sessionManager.session startRunning];
 //
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
