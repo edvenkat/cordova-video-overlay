@@ -496,11 +496,11 @@
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId]; 
         */
 //
-//         CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-//         output = [[AVCaptureMovieFileOutput alloc]init];
-//         output.maxRecordedDuration = maxDuration;
-//         output.movieFragmentInterval = kCMTimeInvalid;
-        //AVCaptureSession *captureSession = self.sessionManager.session;
+        CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+        output = [[AVCaptureMovieFileOutput alloc]init];
+        output.maxRecordedDuration = maxDuration;
+        output.movieFragmentInterval = kCMTimeInvalid;
+        AVCaptureSession *captureSession = self.sessionManager.session;
       
        //AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
        
@@ -518,21 +518,21 @@
         } else {
             NSLog(@"deviceInput: %@", error);
         }*/
-        //[self.sessionManager.session startRunning];
-//        if ([self.sessionManager.session canAddOutput:output]) {
-//          [self.sessionManager.session addOutput:output];
-//         } else {
-//             NSLog(@"canAddOutput error");
-//         }
+        [self.sessionManager.session startRunning];
+       if ([self.sessionManager.session canAddOutput:output]) {
+         [self.sessionManager.session addOutput:output];
+        } else {
+            NSLog(@"canAddOutput error");
+        }
        
        // [self.sessionManager.videoFileOutput startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-        //[output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+        [output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 
         //return true to ensure callback fires
-       // pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
-        //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        //
+       pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        
       
       
 //       captureSession = [AVCaptureSession new];
@@ -568,18 +568,18 @@
 // }
 
 // file URL input
-output = [AVCaptureMovieFileOutput new];
-if([self.sessionManager.session canAddOutput:output]){
-    [self.sessionManager.session addOutput:output];
-}
+// output = [AVCaptureMovieFileOutput new];
+// if([self.sessionManager.session canAddOutput:output]){
+//     [self.sessionManager.session addOutput:output];
+// }
 
-// Start recording
-[output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-//[self.sessionManager.session startRunning];
+// // Start recording
+// [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+// //[self.sessionManager.session startRunning];
 //
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+//         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
+//         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
 
