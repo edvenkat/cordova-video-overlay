@@ -6,8 +6,8 @@
   if (self = [super init]) {
     // Create the AVCaptureSession
     self.session = [[AVCaptureSession alloc] init];
-    self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_CONCURRENT);
-    //self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
+    //self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_CONCURRENT);
+    self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
     //self.sessionQueue = dispatch_queue_create("session queue", NULL);
     self.sessionaudioQueue = dispatch_queue_create("session audio queue", DISPATCH_QUEUE_SERIAL);
     if ([self.session canSetSessionPreset:AVCaptureSessionPresetPhoto]) {
@@ -132,7 +132,7 @@
       }
     
     // Setup the audio input
-     AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
+     /*AVCaptureDevice *audioDevice     = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
      AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error ];  
     
      if (error) {
@@ -142,7 +142,7 @@
     
      if ([self.session canAddInput:audioInput]) {
         [self.session addInput:audioInput];
-     }
+     }*/
     
      AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
       if ([self.session canAddOutput:stillImageOutput]) {
@@ -162,13 +162,14 @@
         [self.session addOutput:dataOutput];
       }
     
-     
+     /*
      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
        if ([self.session canAddOutput:audioOutput]) {
         
          //[audioOutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
           [self.session addOutput:audioOutput];
        }
+       */
     
      
       [self updateOrientation:[self getCurrentOrientation]];
@@ -176,7 +177,7 @@
     
        completion(success);
   });
-  /*
+  //
   dispatch_async(self.sessionaudioQueue, ^{
          NSError *error = nil;
       BOOL success = TRUE;
@@ -202,7 +203,8 @@
    
      self.session.sessionPreset = AVCaptureSessionPresetLow;     
      completion(success);
-  });*/
+  });
+  //
 }
 
 -(void) startRecordVideo:(NSURL *) fileUrl {
