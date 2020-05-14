@@ -591,10 +591,8 @@ if([captureSession canAddOutput:output]){
 - (void)stopRecordVideo:(CDVInvokedUrlCommand *)command
 {
     //
-   [self.commandDelegate runInBackground:^{
-     [captureSession stopRecordVideo];
-            [self.sessionManager stopRecordVideo];
-        }];
+ 
+   [captureSession stopRunning];
     [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
