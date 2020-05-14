@@ -568,11 +568,11 @@ if (audioInput) {
 }
 
 // file URL input
-CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+// CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
 output = [AVCaptureMovieFileOutput new];
       
-        output.maxRecordedDuration = maxDuration;
-        output.movieFragmentInterval = kCMTimeInvalid;
+//         output.maxRecordedDuration = maxDuration;
+//         output.movieFragmentInterval = kCMTimeInvalid;
       
 if([captureSession canAddOutput:output]){
     [captureSession addOutput:output];
