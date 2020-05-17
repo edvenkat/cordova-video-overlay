@@ -170,9 +170,11 @@
 //
 //    frameNumber++;
 //}
--(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+//-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
 //-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutput:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-    
+ -(void)captureOutput:(AVCaptureOutput *)AVCaptureFileOutput didStartRecordingToOutputFileAt:(URL)fileURL fromConnection:(AVCaptureConnection *)connection {
+ 
+
     
   if ([self.renderLock tryLock]) {
     CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
