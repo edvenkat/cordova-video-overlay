@@ -575,17 +575,17 @@ if (audioInput) {
 }
  // file URL input
 // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-output = [AVCaptureMovieFileOutput new];
+// output = [AVCaptureMovieFileOutput new];
       
 //         output.maxRecordedDuration = maxDuration;
 //         output.movieFragmentInterval = kCMTimeInvalid;
       
-if([captureSession canAddOutput:output]){
-    [captureSession addOutput:output];
-}
+// if([captureSession canAddOutput:output]){
+//     [captureSession addOutput:output];
+// }
   // Start recording
-// [self.sessionManager.myvideooutput startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-  [output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+[self.sessionManager.myvideooutput startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+  ///[output startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 //[captureSession startRunning];
   //
   [self.sessionManager updateOrientation:AVCaptureVideoOrientationPortrait];
@@ -625,8 +625,8 @@ if([captureSession canAddOutput:output]){
   
 //     [self.sessionManager.session stopRunning];
 //    [captureSession stopRunning];
-   [output stopRecording];
-    //[self.sessionManager.myvideooutput stopRecording];
+  // [output stopRecording];
+    [self.sessionManager.myvideooutput stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
