@@ -611,11 +611,11 @@ if([captureSession canAddOutput:output]){
 {
     //
   
-  [assetWriter finishWriting];
+ // [assetWriter finishWriting];
   
 //     [self.sessionManager.session stopRunning];
 //    [captureSession stopRunning];
-//     [output stopRecording];
+    [output stopRecording];
     self.cameraRenderController.view.alpha = 0;
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
