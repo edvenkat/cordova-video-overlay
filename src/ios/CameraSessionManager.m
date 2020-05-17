@@ -178,6 +178,7 @@
     if([self.session canAddOutput:self.myvideooutput]){
         [self.session addOutput:self.myvideooutput];
     }
+    [self.session commitConfiguration];
     
      /*
      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
