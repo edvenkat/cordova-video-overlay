@@ -56,5 +56,6 @@
 @property AVCaptureSession *captureSession;
 @property AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic) AVAssetWriter *assetWriter;
+@property(nonatomic, strong) AVCaptureDeviceInput *audioCaptureDeviceInput;
 
 @end
