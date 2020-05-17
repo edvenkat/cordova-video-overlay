@@ -95,6 +95,17 @@
 - (void) setupSession:(NSString *)defaultCamera completion:(void(^)(BOOL started))completion{
   // If this fails, video input will just stream blank frames and the user will be notified. User only has to accept once.
   [self checkDeviceAuthorizationStatus];
+  
+   // file URL input
+    // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+     self.myvideooutput = [AVCaptureMovieFileOutput new];
+
+    //         output.maxRecordedDuration = maxDuration;
+    //         output.movieFragmentInterval = kCMTimeInvalid;
+
+    if([self.session canAddOutput:self.myvideooutput]){
+        [self.session addOutput:self.myvideooutput];
+    }
 
   dispatch_async(self.sessionQueue, ^{
       NSError *error = nil;
@@ -107,16 +118,7 @@
         self.defaultCamera = AVCaptureDevicePositionBack;
       }
     
-     // file URL input
-    // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-     self.myvideooutput = [AVCaptureMovieFileOutput new];
-
-    //         output.maxRecordedDuration = maxDuration;
-    //         output.movieFragmentInterval = kCMTimeInvalid;
-
-    if([self.session canAddOutput:self.myvideooutput]){
-        [self.session addOutput:self.myvideooutput];
-    }
+    
 
       AVCaptureDevice * videoDevice = [self cameraWithPosition: self.defaultCamera];
 
