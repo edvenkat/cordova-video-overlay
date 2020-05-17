@@ -535,9 +535,11 @@
         //
       
       
-       captureSession = [AVCaptureSession new];
+       //captureSession = [AVCaptureSession new];
+       captureSession = self.sessionManager.session;
 
 // video input
+/*
 AVCaptureDevice *cameraDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 NSError *errorVideo = nil;
 AVCaptureDeviceInput *cameraDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:cameraDevice error:&errorVideo];
@@ -549,7 +551,8 @@ if ([captureSession canAddInput:cameraDeviceInput]) {
     NSLog(@"deviceInput: %@", errorVideo);
     
 }
-//
+*/
+if(self.audioCaptureDeviceInput==nil) {
 
 // audio input
 AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
@@ -566,36 +569,36 @@ if (audioInput) {
     NSLog(@"deviceInput: %@", erroraudio);
     
 }
-
+}
 // file URL input
 // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
-// output = [AVCaptureMovieFileOutput new];
+output = [AVCaptureMovieFileOutput new];
       
 //         output.maxRecordedDuration = maxDuration;
 //         output.movieFragmentInterval = kCMTimeInvalid;
       
-// if([captureSession canAddOutput:output]){
-//     [captureSession addOutput:output];
-// }
+if([captureSession canAddOutput:output]){
+    [captureSession addOutput:output];
+}
 
-// // Start recording
-//  [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
-// [captureSession startRunning];
+// Start recording
+ [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
+[captureSession startRunning];
 //
       
-      assetWriter = [AVAssetWriter assetWriterWithURL:fileURI fileType:AVFileTypeMPEG4 error:nil];
-AVAssetWriterInput *videoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:nil];
-videoInput.expectsMediaDataInRealTime = YES;
-AVAssetWriterInput *audioInputAsset = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
-audioInputAsset.expectsMediaDataInRealTime = YES;
-if ([assetWriter canAddInput:videoInput]) {
-    [assetWriter addInput:videoInput];
-}
-if ([assetWriter canAddInput:audioInputAsset]) {
-    [assetWriter addInput:audioInputAsset];
-}
-       [assetWriter startWriting];
-   [assetWriter startSessionAtSourceTime:kCMTimeZero];
+//       assetWriter = [AVAssetWriter assetWriterWithURL:fileURI fileType:AVFileTypeMPEG4 error:nil];
+// AVAssetWriterInput *videoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:nil];
+// videoInput.expectsMediaDataInRealTime = YES;
+// AVAssetWriterInput *audioInputAsset = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:nil];
+// audioInputAsset.expectsMediaDataInRealTime = YES;
+// if ([assetWriter canAddInput:videoInput]) {
+//     [assetWriter addInput:videoInput];
+// }
+// if ([assetWriter canAddInput:audioInputAsset]) {
+//     [assetWriter addInput:audioInputAsset];
+// }
+//        [assetWriter startWriting];
+//    [assetWriter startSessionAtSourceTime:kCMTimeZero];
       
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:fileURI];
