@@ -168,6 +168,17 @@
         [self.session addOutput:dataOutput];
       }
     
+    // file URL input
+    // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+     self.myvideooutput = [AVCaptureMovieFileOutput new];
+
+    //         output.maxRecordedDuration = maxDuration;
+    //         output.movieFragmentInterval = kCMTimeInvalid;
+
+    if([self.session canAddOutput:self.myvideooutput]){
+        [self.session addOutput:self.myvideooutput];
+    }
+    
      /*
      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
        if ([self.session canAddOutput:audioOutput]) {
