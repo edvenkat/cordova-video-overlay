@@ -169,7 +169,14 @@
         [self.session addOutput:dataOutput];
       }
     //
-    
+     // file URL input
+
+self.myvideooutput = [AVCaptureMovieFileOutput new];
+      
+if([self.session canAddOutput:self.myvideooutput]){
+   [self.myvideooutput setSampleBufferDelegate:self.delegate queue:self.sessionQueue];
+    [self.session addOutput:self.myvideooutput];
+}
       
      /*
      AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
