@@ -63,6 +63,7 @@
 @property AVCaptureMovieFileOutput *output;
 @property (nonatomic) AVAssetWriterInput *audioWriterInput;
 @property (nonatomic) AVCaptureAudioDataOutput *audioOutput;
+@property AVCaptureMovieFileOutput *myvideooutput;
 
 //@property AVCaptureVideoDataOutput *output;
 
