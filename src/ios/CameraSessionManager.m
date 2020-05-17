@@ -157,7 +157,7 @@
         self.stillImageOutput = stillImageOutput;
       }
 
-    /*
+    //
       AVCaptureVideoDataOutput *dataOutput = [[AVCaptureVideoDataOutput alloc] init];
       if ([self.session canAddOutput:dataOutput]) {
           self.dataOutput = dataOutput;
@@ -168,7 +168,7 @@
 
         [self.session addOutput:dataOutput];
       }
-    */
+    //
     
       
      /*
