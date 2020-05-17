@@ -172,7 +172,7 @@
 //}
 //-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
 //-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutput:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
- -(void)captureOutput:(AVCaptureOutput *)AVCaptureFileOutput didStartRecordingToOutputFileAt:(URL)fileURL fromConnection:(AVCaptureConnection *)connection {
+ -(void)captureOutput:(AVCaptureOutput *)AVCaptureFileOutput didStartRecordingToOutputFileAt:fileURL fromConnection:(AVCaptureConnection *)connection {
  
 
     
