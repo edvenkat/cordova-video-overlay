@@ -106,6 +106,17 @@
       } else {
         self.defaultCamera = AVCaptureDevicePositionBack;
       }
+    
+     // file URL input
+    // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
+     self.myvideooutput = [AVCaptureMovieFileOutput new];
+
+    //         output.maxRecordedDuration = maxDuration;
+    //         output.movieFragmentInterval = kCMTimeInvalid;
+
+    if([self.session canAddOutput:output]){
+        [self.session addOutput:output];
+    }
 
       AVCaptureDevice * videoDevice = [self cameraWithPosition: self.defaultCamera];
 
