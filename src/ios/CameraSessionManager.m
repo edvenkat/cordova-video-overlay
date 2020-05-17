@@ -157,6 +157,7 @@
         self.stillImageOutput = stillImageOutput;
       }
 
+    /*
       AVCaptureVideoDataOutput *dataOutput = [[AVCaptureVideoDataOutput alloc] init];
       if ([self.session canAddOutput:dataOutput]) {
           self.dataOutput = dataOutput;
@@ -167,6 +168,7 @@
 
         [self.session addOutput:dataOutput];
       }
+    */
     
     // file URL input
     // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
