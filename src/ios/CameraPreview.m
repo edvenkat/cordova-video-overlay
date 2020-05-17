@@ -552,7 +552,7 @@ if ([captureSession canAddInput:cameraDeviceInput]) {
     
 }
 */
-      /*
+      
 if(self.audioCaptureDeviceInput==nil) {
 
 // audio input
@@ -571,9 +571,7 @@ if (audioInput) {
     NSLog(@"deviceInput: %@", erroraudio);
     
 }
-}
-      */
-// file URL input
+ // file URL input
 // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
 output = [AVCaptureMovieFileOutput new];
       
@@ -583,10 +581,15 @@ output = [AVCaptureMovieFileOutput new];
 if([captureSession canAddOutput:output]){
     [captureSession addOutput:output];
 }
-
-// Start recording
+  // Start recording
  [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 [captureSession startRunning];
+
+  
+}
+      
+
+
 //
       
 //       assetWriter = [AVAssetWriter assetWriterWithURL:fileURI fileType:AVFileTypeMPEG4 error:nil];
