@@ -554,7 +554,7 @@ if ([captureSession canAddInput:cameraDeviceInput]) {
 */
       
 if(self.audioCaptureDeviceInput==nil) {
-  [self.sessionManager.session beginConfiguration];
+  //[self.sessionManager.session beginConfiguration];
   captureSession = self.sessionManager.session;
 
 // audio input
