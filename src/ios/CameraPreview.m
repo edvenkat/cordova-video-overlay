@@ -552,6 +552,7 @@ if ([captureSession canAddInput:cameraDeviceInput]) {
     
 }
 */
+      /*
 if(self.audioCaptureDeviceInput==nil) {
 
 // audio input
@@ -571,6 +572,7 @@ if (audioInput) {
     
 }
 }
+      */
 // file URL input
 // CMTime maxDuration = CMTimeMakeWithSeconds(1800, 1);
 output = [AVCaptureMovieFileOutput new];
