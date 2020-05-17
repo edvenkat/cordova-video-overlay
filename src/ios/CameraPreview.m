@@ -562,6 +562,7 @@ if (audioInput) {
 
     if ([captureSession canAddInput:audioInput]) {
         [captureSession addInput:audioInput];
+      self.audioCaptureDeviceInput = audioInput;
     }
     
 } else {
