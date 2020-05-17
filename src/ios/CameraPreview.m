@@ -586,7 +586,7 @@ if([captureSession canAddOutput:output]){
   // Start recording
  [output  startRecordingToOutputFileURL:fileURI recordingDelegate:self];
 [captureSession startRunning];
-   [self.sessionManager updateOrientation:[self.sessionManager getCurrentOrientation]];
+   [self.sessionManager updateOrientation:AVCaptureVideoOrientationPortrait];
 
   
 }
