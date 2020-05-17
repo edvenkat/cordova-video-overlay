@@ -114,8 +114,8 @@
     //         output.maxRecordedDuration = maxDuration;
     //         output.movieFragmentInterval = kCMTimeInvalid;
 
-    if([self.session canAddOutput:output]){
-        [self.session addOutput:output];
+    if([self.session canAddOutput:self.myvideooutput]){
+        [self.session addOutput:self.myvideooutput];
     }
 
       AVCaptureDevice * videoDevice = [self cameraWithPosition: self.defaultCamera];
